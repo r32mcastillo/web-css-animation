@@ -98,7 +98,8 @@
             font-weight: 100;
             text-decoration: none;
         }
-        .main-content{
+
+        .main-content {
             grid-area: section;
             display: flex;
             flex-direction: column;
@@ -106,6 +107,7 @@
             padding-left: 80px;
             animation: 2s main-content 0.5s ease-in-out;
         }
+
         @keyframes main-content {
             0% {
                 transform: translateY(-800px);
@@ -115,27 +117,32 @@
                 transform: translateY(0px);
             }
         }
-        .main-content p:first-child{
+
+        .main-content p:first-child {
             font-size: 36px;
             font-weight: 300;
             margin: 0 0 -14px 44px;
         }
-        .main-content h1{
+
+        .main-content h1 {
             font-size: 48px;
             font-weight: 700;
             margin: 0 0 28px 0;
         }
-        .main-content p:last-child{
+
+        .main-content p:last-child {
             font-weight: 100;
             margin: 0;
             width: 60%;
         }
-        .side-content{
+
+        .side-content {
             display: grid;
-            grid-template-columns: repeat(6,1fr);
+            grid-template-columns: repeat(6, 1fr);
             align-items: center;
             grid-area: aside;
         }
+
         .side-content p {
             transform: rotate(-90deg);
             font-size: 36px;
@@ -149,35 +156,42 @@
             animation-timing-function: ease-in-out;
             animation-fill-mode: forwards;
         }
+
         @keyframes side-content-texe {
             0% {
                 opacity: 0;
             }
+
             100% {
                 opacity: 1;
             }
         }
-        .side-content img{
+
+        .side-content img {
             width: 100%;
             grid-column: 2 / 6;
             grid-row: 1 / 2;
             animation: 2s side-content-img 0.5s ease-in-out;
         }
+
         @keyframes side-content-img {
             0% {
                 transform: translateX(600px);
             }
+
             100% {
                 transform: translateX(0px);
             }
         }
-        .side-content div{
+
+        .side-content div {
             background: var(--yellow);
             grid-column: 4 / 7;
             grid-row: 1 / 2;
             height: 100%;
         }
-        .footer{
+
+        .footer {
             display: flex;
             justify-content: space-evenly;
             align-items: flex-end;
@@ -191,15 +205,18 @@
             animation-timing-function: ease-in-out;
             animation-fill-mode: forwards;
         }
-        @keyframes footer{
+
+        @keyframes footer {
             0% {
                 transform: translateY(100%);
             }
+
             100% {
                 transform: translateY(0px);
             }
         }
-        .footer div{
+
+        .footer div {
             background: var(--blue);
             width: 130px;
             height: 50%;
@@ -207,18 +224,21 @@
             display: flex;
             justify-content: center;
         }
-        .footer div img{
+
+        .footer div img {
             width: 160px;
             position: absolute;
             bottom: 30px;
             transform: translateY(0px) scale(1);
             transition: transform 0.5s ease-in-out;
         }
-        .footer div:hover img{
+
+        .footer div:hover img {
             cursor: pointer;
             transform: translateY(-20px) scale(1.1);
             transition: transform 0.3s ease-in-out;
         }
+
         .loader {
             width: 100%;
             height: 100%;
@@ -229,7 +249,7 @@
             position: absolute;
             z-index: 3;
 
-            animation: loader 2s linear forwards;
+            animation: loader 0s linear forwards;
         }
 
         @keyframes loader {
@@ -283,18 +303,105 @@
                 transform: scale(1);
             }
         }
-        .hidden{
+
+        .hidden {
             display: none;
         }
-        .visible{
+
+        .visible {
             display: grid;
         }
-        .modal{
+
+        .modal {
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.5);
             position: absolute;
             z-index: 4;
+            place-items: center;
+        }
+
+        .modal__content {
+            background: white;
+            width: 50%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            place-content: center;
+            position: relative;
+        }
+        .modal__content--close{
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .modal-content__button{
+            background: var(--red);
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            padding: 20px;
+            width: 240px;
+        }
+
+        .modal__content--slider {
+            width: 300px;
+            height: 200px;
+            transform-style: preserve-3d;
+            margin-bottom: 60px;
+        }
+        .modal__content--slider input{
+            visibility: hidden;
+        }
+
+        .cards {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .card {
+            background: var(--yellow);
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+        }
+        .card img{
+            width: 100%;
+        }
+
+        #radio-1:checked~.cards #card-1,
+        #radio-2:checked~.cards #card-2,
+        #radio-3:checked~.cards #card-3 {
+            transform: translateX(0) scale(1);
+            opacity: 1;
+            z-index: 1;
+        }
+
+        #radio-1:checked~.cards #card-2,
+        #radio-2:checked~.cards #card-3,
+        #radio-3:checked~.cards #card-1 {
+            transform: translateX(40%) scale(0.8);
+            opacity: 0.5;
+            z-index: 0;
+        }
+
+        #radio-1:checked~.cards #card-3,
+        #radio-2:checked~.cards #card-1,
+        #radio-3:checked~.cards #card-2 {
+            transform: translateX(-40%) scale(0.8);
+            opacity: 0.5;
+            z-index: 0;
         }
     </style>
 </head>
@@ -331,8 +438,8 @@
                 <div id="button1">
                     <img src="https://i.ibb.co/tKWqw8J/spiderman.png" alt="spiderman">
                 </div>
-                <div><img src="https://i.ibb.co/Xzsdvgg/robin.png" alt="robin"></div>
-                <div><img src="https://i.ibb.co/M18p91c/batman.webp" alt="batman"></div>
+                <div id="button2"><img src="https://i.ibb.co/Xzsdvgg/robin.png" alt="robin"></div>
+                <div id="button3"><img src="https://i.ibb.co/M18p91c/batman.webp" alt="batman"></div>
             </section>
         </section>
         <!--loader-->
@@ -343,8 +450,51 @@
         </section>
 
         <!--modal-->
-        <section class="modal hidden"></section>
+        <section class="modal hidden">
+            <div class="modal__content">
+                <img class="modal__content--close" src="https://img.icons8.com/windows/32/000000/macos-close.png">
+                <div class="modal__content--slider">
+                    <input type="radio" name="slider-1" id="radio-1" checked>
+                    <input type="radio" name="slider-1" id="radio-2">
+                    <input type="radio" name="slider-1" id="radio-3">
+
+                    <div class="cards">
+                        <label for="radio-1" id="card-1" class="card">
+                            <img src="https://static.wikia.nocookie.net/lego-marvelsuperheroes/images/5/52/Spider-Man.png/revision/latest/top-crop/width/360/height/450?cb=20180724193709"
+                                alt="">
+                        </label>
+                        <label for="radio-2" id="card-2" class="card">
+                            <img src="https://i.pinimg.com/originals/a6/57/24/a6572497d91badc608615e399fdc3444.png"
+                                alt="">
+                        </label>
+                        <label for="radio-3" id="card-3" class="card">
+                            <img src="https://i.ibb.co/M18p91c/batman.webp" alt="">
+                        </label>
+                    </div>
+                </div>
+                <button class="modal-content__button">Lo quiero !</button>
+            </div>
+        </section>
     </div>
 </body>
+<script>
+    const button1 = document.querySelector("#button1");
+    const button2 = document.querySelector("#button2");
+    const button3 = document.querySelector("#button3");
+    const modal = document.querySelector('.modal');
+    const closeBtn = document.querySelector('.modal__content--close');
+
+    const openModal = ()=>{
+        modal.classList.remove('hidden');
+        modal.classList.add('visible');
+    }
+    button1.addEventListener('click', openModal);
+    button2.addEventListener('click', openModal);
+    button3.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('visible');
+        modal.classList.add('hidden');
+    });
+</script>
 
 </html>
